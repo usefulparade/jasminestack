@@ -1,0 +1,27 @@
+body {
+    background-image: linear-gradient(rgb(240, 155, 58) , rgb(243, 235, 192));
+    
+}
+
+h1 {
+    display: block;
+    position: fixed;
+    color:rgb(125, 173, 137);
+    text-shadow: 2px 2px white;
+    width: 100%;
+    top: 25px;
+    right: 10px;
+    animation: letterspacing 30s ease-in-out infinite alternate;
+    filter: blur(2px);
+}
+
+.circlebottom {
+    display: block;
+    position: fixed;
+    width: 50%;
+    height: 300px;
+    left: 25%;
+    top: -150px;
+    border-radius: 500px;
+    background-color: red;
+}

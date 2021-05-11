@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(240, 155, 58);
+}
+
+h2 {
+    color: white;
+    /* background-color: red; */
+    /* border-radius: 50px; */
+    /* margin-top: 10px; */
+    letter-spacing: 0.5em;
+}
+
+.container {
+    display: block;
+    position: relative;
+    background-color: red;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+}
