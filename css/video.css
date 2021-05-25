@@ -1,5 +1,6 @@
 body {
-    background-image: linear-gradient(rgb(240, 155, 58) , rgb(243, 235, 192));
+    /* background-image: linear-gradient(rgb(240, 155, 58) , rgb(243, 235, 192)); */
+    background-color: rgb(48, 18, 18);
     
 }
 
@@ -11,8 +12,10 @@ h1 {
     width: 100%;
     top: 25px;
     right: 10px;
-    animation: letterspacing 30s ease-in-out infinite alternate;
+    /* animation: letterspacing 30s ease-in-out infinite alternate; */
+    letter-spacing: 0.4em;
     filter: blur(2px);
+    white-space: pre;
 }
 
 .circlebottom {

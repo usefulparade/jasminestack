@@ -1,6 +1,7 @@
 body {
-    background-image: linear-gradient(rgb(211, 177, 177) , rgb(240, 155, 58));
-    
+    /* background-image: linear-gradient(rgb(211, 177, 177) , rgb(240, 155, 58)); */
+   
+    background-color: rgb(111, 168, 155);
 }
 
 h1 {
@@ -10,8 +11,10 @@ h1 {
     position: fixed;
     width: 100%;
     bottom: 35px;
-    animation: letterspacing 40s ease-in-out infinite alternate;
+    /* animation: letterspacing 40s ease-in-out infinite alternate; */
+    letter-spacing: 0.4em;
     filter: blur(2px);
+    white-space: pre;
 }
 
 .circletop {

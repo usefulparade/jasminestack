@@ -8,6 +8,7 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 18px;
     margin: 0px;
+    /* white-space: pre; */
 }
 
 h1 {
@@ -33,5 +34,35 @@ h2 {
     from {letter-spacing: 0em;}
     to {letter-spacing: 1em;}
 }
+
+a {
+    transition: color 1s, transform 0.5s;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+}
+
+ /* unvisited link */
+ a:link {
+    color: red;
+    transform: translateY(0px);
+  }
+  
+  /* visited link */
+  a:visited {
+    color: red;
+    transform: translateY(0px);
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: blue;
+    transform: translateY(10px);
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
+    transform: translateY(10px);
+  } 
 
 
