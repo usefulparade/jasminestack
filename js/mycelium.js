@@ -43,13 +43,13 @@ function windowResized(){
 
 function receiveSpore(pos){
 
-    console.log("spore recieved! at: " + pos);
+    // console.log("spore recieved! at: " + pos);
     // var newTree = new Tree(createVector(pos.x, 0));
     // newTree.germinate();
     // trees.push(newTree);
     trees.push(new Tree(createVector(pos.x, 0), createVector(random(-100, 100), random(20, 200))));
     trees[trees.length-1].germinate();
-    console.log(trees);
+    // console.log(trees);
 
     // trees.push(new Tree(createVector(pos.x, 0)));
 }

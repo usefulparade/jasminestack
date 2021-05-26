@@ -28,7 +28,7 @@ function draw(){
         }
     }
 
-    for (let i=0;i<spores.length;i++){
+    for (var i=0;i<spores.length;i++){
         spores[i].run();
         if (spores[i].landed()){
             if (bottomframe != null){
@@ -36,21 +36,15 @@ function draw(){
             }
             makeCap(spores[i].position)
             spores.splice(i, 1);
-            // console.log("a spore landed! new length: " + spores.length);
-            // middleframe.hi = true;
-           
-            // for (j=0;j<frames.length;j++){
-            //     // frames[j].window.postMessage("landed", "*");
-            //     frames[1].document.hi = true;
-            // }
         }
     }
 
-    for (let j=0;j<caps.length;j++){
+    for (var j=0;j<caps.length;j++){
         caps[j].grow();
         caps[j].show();
+
         if (caps[j].dead){
-            caps.splice[j, 1];
+            caps.splice(j, 1);
         }
     }
 
@@ -101,33 +95,51 @@ function makeSpore(position, velocity){
 };
 
 function makeCap(position){
-    if (caps.length < 25){
+    if (position.x > 0 && position.x < width){
         var cappy = new Cap(createVector(position.x, height));
         caps.push(cappy);
+        console.log(caps);
+
+        if (caps.length > 10){
+            for (var i=0;i<caps.length;i++){
+                if (!caps[i].killed){
+                    caps[i].kill();
+                    break;
+                }
+               
+            }
+        }
     }
 }
 
 let Cap = function(position){
     this.position = position.copy();
     if (random(0, 1) > 0.95){
-        this.size = random(300, 400);
+        this.size = random(200, 300);
     } else {
         this.size = random(50, 100);
     }
     this.sizeProgress = 0;
-    this.n = random(4, 10);
+    this.sizeMod = createVector(random(0.1, 1), random(0.1, 1));
+    this.n = random(3, 10);
     this.angle = TWO_PI/this.n;
+    this.bloom = 3;
     this.verts = [];
 
     this.lerp = 0;
+    this.lerpGrowInc = 0.002;
+    this.lerpDieInc = 0.0002;
+    this.lerpKillInc = 0.02;
+    this.lerpIncrement = this.lerpGrowInc;
     this.grown = false;
+    this.killed = false;
     this.dead = false;
 };
 
 Cap.prototype.grow = function(){
     if (!this.grown){
         if (this.lerp < 1){
-            this.lerp += 0.002;
+            this.lerp += this.lerpIncrement;
         } else {
             this.lerp = 1;
             if (!this.grown){
@@ -135,12 +147,21 @@ Cap.prototype.grow = function(){
                     makeSpore(p5.Vector.sub(this.position, createVector(0, this.size*0.5)), createVector(random(-2, 2), random(-5, 0)));
                 }
                 this.grown = true;
+                this.lerpIncrement = this.lerpDieInc;
             }
+
+        }
+    } else if (this.grown || this.killed){
+        if (this.lerp > 0){
+            this.lerp -= this.lerpIncrement;
+        } else {
+            this.lerp = 0;
+            this.dead = true;
 
         }
     } else {
         if (this.lerp > 0){
-            this.lerp -= 0.0002;
+            this.lerp -= this.lerpIncrement;
         } else {
             this.lerp = 0;
             this.dead = true;
@@ -149,21 +170,32 @@ Cap.prototype.grow = function(){
     }
 };
 
+Cap.prototype.kill = function(){
+    this.grown = true;
+    this.killed = true;
+    this.lerpIncrement = this.lerpKillInc;
+}
+
 Cap.prototype.show = function(){
     
     this.sizeProgress = lerp(0, this.size, this.lerp);
+    this.bloom = lerp(this.n-1, this.n, this.lerp);
+    // this.bloom = 5;
+    this.angle = TWO_PI/this.bloom;
+    this.verts = [];
 
-    for (var i=0;i<this.n;i++){
-        var sx = this.position.x + cos(i*this.angle) * (this.sizeProgress);
-        var sy = this.position.y + sin(i*this.angle) * (this.sizeProgress);
+    for (var i=0;i<TWO_PI;i+=this.angle){
+        var sx = this.position.x + cos(i) * (this.sizeProgress * this.sizeMod.x);
+        var sy = this.position.y + sin(i) * (this.sizeProgress * this.sizeMod.y);
         var vert = new p5.Vector(sx, sy);
-        this.verts[i] = vert;
+        // this.verts[i] = vert;
+        append(this.verts, vert);
     }
+
     fill(255);
     stroke(255);
-
     beginShape();
-        for (var j=0;j<this.n;j++){
+        for (var j=0;j<this.verts.length;j++){
             vertex(this.verts[j].x, this.verts[j].y);
         }
     endShape(CLOSE);
