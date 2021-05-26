@@ -1,6 +1,13 @@
 body {
     /* background-color: rgb(240, 155, 58); */
-    background-color: rgb(106, 121, 39);
+    /* background-color: rgb(106, 121, 39); */
+    background-color: white;
+}
+
+h1 {
+    padding: 0px;
+    margin: 0px;
+    filter: blur(2px);
 }
 
 h2 {
@@ -16,12 +23,50 @@ p {
     padding-right: 15%;
 }
 
+a {
+    transition: color 1s, transform 0.5s;
+    text-decoration-line: none;
+}
+
+/* unvisited link */
+a:link {
+    color: white;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: white;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: blue;
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
+  } 
+
 .container {
     display: block;
-    position: relative;
+    position: fixed;
+    left: 25%;
     background-color: red;
     width: 50%;
+    margin-top: 0px;
+    padding-top: 0px;
     margin-left: auto;
     margin-right: auto;
     height: 100vh;
+    overflow: none;
+    /* filter: blur(2px); */
+    transition: left 0.5s, width 0.5s;
+}
+
+@media only screen and (max-width: 900px){
+    .container {
+        left: 10%;
+        width: 80%;
+    }
 }

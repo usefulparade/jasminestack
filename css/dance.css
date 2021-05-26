@@ -1,13 +1,13 @@
 body {
     /* background-image: linear-gradient(rgb(211, 177, 177) , rgb(240, 155, 58)); */
-   
     background-color: rgb(214, 164, 123);
+    /* background-color: rgb(106, 121, 39); */
 }
 
 h1 {
     display: block;
     color: rgb(56, 149, 255);
-    text-shadow: 2px 2px white;
+    text-shadow: 4px 4px white;
     position: fixed;
     width: 100%;
     bottom: 35px;
@@ -17,6 +17,15 @@ h1 {
     white-space: pre;
 }
 
+.canvas{
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
 .circletop {
     display: block;
     position: fixed;
@@ -24,6 +33,14 @@ h1 {
     height: 300px;
     left: 25%;
     bottom: -150px;
-    border-radius: 500px;
+    border-radius: 20px;
     background-color: red;
+    transition: left 0.5s, width 0.5s;
+}
+
+@media only screen and (max-width: 900px){
+    .circletop {
+        left: 10%;
+        width: 80%;
+    }
 }
