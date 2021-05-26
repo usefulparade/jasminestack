@@ -14,6 +14,7 @@ function setup(){
     counter = 0;
     middleframe = window.parent.frames[1];
     bottomframe = window.parent.frames[2];
+    // frameRate(24);
     
 }
 
@@ -98,9 +99,9 @@ function makeCap(position){
     if (position.x > 0 && position.x < width){
         var cappy = new Cap(createVector(position.x, height));
         caps.push(cappy);
-        console.log(caps);
+        // console.log(caps);
 
-        if (caps.length > 10){
+        if (caps.length > 15){
             for (var i=0;i<caps.length;i++){
                 if (!caps[i].killed){
                     caps[i].kill();
@@ -129,7 +130,7 @@ let Cap = function(position){
     this.lerp = 0;
     this.lerpGrowInc = 0.002;
     this.lerpDieInc = 0.0002;
-    this.lerpKillInc = 0.02;
+    this.lerpKillInc = 0.002;
     this.lerpIncrement = this.lerpGrowInc;
     this.grown = false;
     this.killed = false;
@@ -137,7 +138,15 @@ let Cap = function(position){
 };
 
 Cap.prototype.grow = function(){
-    if (!this.grown){
+    if (this.grown || this.killed){
+
+        this.lerp -= this.lerpIncrement;
+
+        if (this.lerp <= 0){
+            this.dead = true;
+        }
+
+    } else {
         if (this.lerp < 1){
             this.lerp += this.lerpIncrement;
         } else {
@@ -151,36 +160,19 @@ Cap.prototype.grow = function(){
             }
 
         }
-    } else if (this.grown || this.killed){
-        if (this.lerp > 0){
-            this.lerp -= this.lerpIncrement;
-        } else {
-            this.lerp = 0;
-            this.dead = true;
-
-        }
-    } else {
-        if (this.lerp > 0){
-            this.lerp -= this.lerpIncrement;
-        } else {
-            this.lerp = 0;
-            this.dead = true;
-
-        }
     }
 };
 
 Cap.prototype.kill = function(){
-    this.grown = true;
+    this.lerp = this.lerp;
     this.killed = true;
     this.lerpIncrement = this.lerpKillInc;
-}
+};
 
 Cap.prototype.show = function(){
     
     this.sizeProgress = lerp(0, this.size, this.lerp);
-    this.bloom = lerp(this.n-1, this.n, this.lerp);
-    // this.bloom = 5;
+    this.bloom = lerp(this.n-2, this.n, this.lerp);
     this.angle = TWO_PI/this.bloom;
     this.verts = [];
 
@@ -188,7 +180,6 @@ Cap.prototype.show = function(){
         var sx = this.position.x + cos(i) * (this.sizeProgress * this.sizeMod.x);
         var sy = this.position.y + sin(i) * (this.sizeProgress * this.sizeMod.y);
         var vert = new p5.Vector(sx, sy);
-        // this.verts[i] = vert;
         append(this.verts, vert);
     }
 
