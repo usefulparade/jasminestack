@@ -21,7 +21,8 @@ h1 {
     margin-top: 0px;
     margin-bottom: 5px;
     font-size: 3em;
-    
+    filter: blur(2px);
+    transition: font-size 0.5s;
 }
 
 h2 {
@@ -35,32 +36,27 @@ h2 {
 
 a {
     transition: color 1s, transform 0.5s;
-    text-decoration-line: underline;
-    text-decoration-style: wavy;
+    text-decoration-line: none;
 }
 
- /* unvisited link */
- a:link {
-    color: red;
-    transform: translateY(0px);
+/* unvisited link */
+a:link {
+    color: white;
   }
   
   /* visited link */
   a:visited {
-    color: red;
-    transform: translateY(0px);
+    color: white;
   }
   
   /* mouse over link */
   a:hover {
     color: blue;
-    transform: translateY(10px);
   }
   
   /* selected link */
   a:active {
     color: blue;
-    transform: translateY(10px);
   } 
 
 
@@ -121,6 +117,7 @@ iframe {
 @media only screen and (max-width: 600px){
     h1 {
         font-size: 2em;
+        filter: blur(1px);
     }
 }
 

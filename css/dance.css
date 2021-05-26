@@ -6,14 +6,12 @@ body {
 
 h1 {
     display: block;
-    color: rgb(56, 149, 255);
-    text-shadow: 4px 4px white;
+    /* color: rgb(56, 149, 255); */
+    text-shadow: 4px 4px red;
     position: fixed;
     width: 100%;
     bottom: 35px;
-    /* animation: letterspacing 40s ease-in-out infinite alternate; */
-    letter-spacing: 0.4em;
-    filter: blur(2px);
+    letter-spacing: 0em;
     white-space: pre;
 }
 

@@ -8,14 +8,11 @@ body {
 h1 {
     display: block;
     position: fixed;
-    color:rgb(125, 173, 137);
-    text-shadow: 4px -4px white;
+    text-shadow: 4px -4px red;
     width: 100%;
     top: 25px;
     right: 10px;
-    /* animation: letterspacing 30s ease-in-out infinite alternate; */
-    letter-spacing: 0.4em;
-    filter: blur(2px);
+    /* letter-spacing: 0.4em; */
     white-space: pre;
 }
 
