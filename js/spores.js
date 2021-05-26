@@ -152,9 +152,11 @@ Cap.prototype.grow = function(){
         } else {
             this.lerp = 1;
             if (!this.grown){
-                if (random(0, 1) > 0.5){ // coin toss to make a new spore
-                    makeSpore(p5.Vector.sub(this.position, createVector(0, this.size*0.5)), createVector(random(-2, 2), random(-5, 0)));
-                }
+                
+                    if (random(0, caps.length) < constrain(caps.length*0.5, 0, 5)){ // new spores from grown caps get less likely the more caps there are
+                        makeSpore(p5.Vector.sub(this.position, createVector(0, this.size*0.5)), createVector(random(-2, 2), random(-5, 0)));
+                    }
+                
                 this.grown = true;
                 this.lerpIncrement = this.lerpDieInc;
             }
