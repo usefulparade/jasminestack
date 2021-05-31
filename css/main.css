@@ -21,7 +21,7 @@ h1 {
     margin-top: 0px;
     margin-bottom: 5px;
     font-size: 3em;
-    filter: blur(2px);
+    /* filter: blur(2px); */
     transition: font-size 0.5s;
     user-select: none;
 }
@@ -64,9 +64,8 @@ a:link {
 .dance {
     display: block; 
     width: 100vw; 
-    height: 45vh; 
+    height: calc(100vh / 2); 
     border: solid 10px white; 
-    border-bottom: 5px;
     box-sizing: border-box;
     overflow: hidden;
     transition: height 0.5s;
@@ -74,10 +73,12 @@ a:link {
 
 .about {
     display: block; 
-    width: 100vw; 
-    height: 10vh; 
+    width: 100vw;
+    /* min-height: 100px; */
+    height: 0px; 
     border: solid 10px white; 
-    border-bottom: 5px;
+    border-bottom: 0px;
+    border-top: 0px;
     box-sizing: border-box;
     overflow: hidden;
     transition: height 0.5s;
@@ -86,8 +87,9 @@ a:link {
 .video {
     display: block; 
     width: 100vw; 
-    height: 45vh; 
+    height: calc(100vh / 2);  
     border: solid 10px white; 
+
     box-sizing: border-box;
     overflow: hidden;
     transition: height 0.5s;
@@ -113,9 +115,10 @@ iframe {
     height: 100vh;
     top: 0;
     left: 0;
+    filter: blur(1px);
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 720px){
     h1 {
         font-size: 2em;
         filter: blur(1px);

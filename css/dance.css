@@ -1,16 +1,17 @@
 body {
     /* background-image: linear-gradient(rgb(211, 177, 177) , rgb(240, 155, 58)); */
-    background-color: rgb(214, 164, 123);
+    /* background-color: rgb(214, 164, 123); */
     /* background-color: rgb(106, 121, 39); */
+    background-color: rgb(56, 9, 36);
 }
 
 h1 {
     display: block;
     /* color: rgb(56, 149, 255); */
-    text-shadow: 4px 4px red;
+    text-shadow: 4px 4px rgb(167, 82, 82);
     position: fixed;
     width: 100%;
-    bottom: 35px;
+    bottom: 0px;
     letter-spacing: 0em;
     white-space: pre;
 }
@@ -28,11 +29,11 @@ h1 {
     display: block;
     position: fixed;
     width: 50%;
-    height: 300px;
+    height: 500px;
     left: 25%;
-    bottom: -150px;
-    border-radius: 20px;
-    background-color: red;
+    bottom: -250px;
+    border-radius: 500px;
+    background-color: rgb(167, 82, 82);
     transition: left 0.5s, width 0.5s;
 }
 

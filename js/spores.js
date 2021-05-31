@@ -29,16 +29,7 @@ function draw(){
         }
     }
 
-    for (var i=0;i<spores.length;i++){
-        spores[i].run();
-        if (spores[i].landed()){
-            if (bottomframe != null){
-                bottomframe.receiveSpore(spores[i].position);
-            }
-            makeCap(spores[i].position)
-            spores.splice(i, 1);
-        }
-    }
+    
 
     for (var j=0;j<caps.length;j++){
         caps[j].grow();
@@ -49,10 +40,21 @@ function draw(){
         }
     }
 
+    for (var i=0;i<spores.length;i++){
+        spores[i].run();
+        if (spores[i].landed()){
+            if (bottomframe != null){
+                bottomframe.receiveSpore(spores[i].position, spores[i].c);
+            }
+            makeCap(spores[i].position, spores[i].c);
+            spores.splice(i, 1);
+        }
+    }
+
 }
 
 function mouseClicked(){
-    makeSpore(createVector(mouseX, mouseY), createVector(random(-1, 1), random(-1, -1)));
+    makeSpore(createVector(mouseX, mouseY), createVector(random(-1, 1), random(-1, -1)), this.c = color(random(20, 150), random(0, 150), random(150, 255)));
 }
 
 function windowResized(){
@@ -62,11 +64,12 @@ function windowResized(){
     }
 }
 
-let Spore = function(position, velocity){
+let Spore = function(position, velocity, col){
     this.acceleration = createVector(0, 0.05);
     this.velocity = velocity.copy();
     this.position = position.copy();
     this.radius = random(3, 10);
+    this.c = col;
     
 
 };
@@ -82,24 +85,25 @@ Spore.prototype.update = function(){
 };
 
 Spore.prototype.display = function(){
-    stroke(255);
-    fill(255);
-    ellipse(this.position.x, this.position.y, this.radius);
+    push();
+        stroke(this.c);
+        fill(this.c);
+        ellipse(this.position.x, this.position.y, this.radius);
+    pop();
 };
 
 Spore.prototype.landed = function(){
     return this.position.y > windowHeight;
 };
 
-function makeSpore(position, velocity){
-    spores.push(new Spore(position, velocity));
+function makeSpore(position, velocity, col){
+    spores.push(new Spore(position, velocity, col));
 };
 
-function makeCap(position){
+function makeCap(position, col){
     if (position.x > 0 && position.x < width){
-        var cappy = new Cap(createVector(position.x, height));
+        var cappy = new Cap(createVector(position.x, height), col);
         caps.push(cappy);
-        // console.log(caps);
 
         if (caps.length > 15){
             for (var i=0;i<caps.length;i++){
@@ -113,13 +117,21 @@ function makeCap(position){
     }
 }
 
-let Cap = function(position){
+function makeCapFromBelow(position, col){
+    let parsedColor = color(col.levels[0], col.levels[1], col.levels[2]);
+    makeCap(position, parsedColor);
+
+}
+
+let Cap = function(position, col){
     this.position = position.copy();
     if (random(0, 1) > 0.95){
-        this.size = random(200, 300);
+        this.size = random(300, 600);
     } else {
-        this.size = random(50, 100);
+        this.size = random(200, 300);
     }
+    this.c = col;
+    this.alpha = 255;
     this.sizeProgress = 0;
     this.sizeMod = createVector(random(0.1, 1), random(0.1, 1));
     this.n = random(3, 10);
@@ -154,7 +166,8 @@ Cap.prototype.grow = function(){
             if (!this.grown){
                 
                     if (random(0, caps.length) < constrain(caps.length*0.5, 0, 5)){ // new spores from grown caps get less likely the more caps there are
-                        makeSpore(p5.Vector.sub(this.position, createVector(0, this.size*0.5)), createVector(random(-2, 2), random(-5, 0)));
+                        var newCol = color(red(this.c)+random(-10, 10), green(this.c), blue(this.c)+random(-10, 10)); // child spores should be a slightly different color
+                        makeSpore(p5.Vector.sub(this.position, createVector(0, this.size*0.5)), createVector(random(-2, 2), random(-5, 0)), newCol);
                     }
                 
                 this.grown = true;
@@ -172,9 +185,16 @@ Cap.prototype.kill = function(){
 };
 
 Cap.prototype.show = function(){
+    if (this.grown || this.killed){
+        this.sizeProgress = this.sizeProgress;
+        this.bloom = this.bloom;
+        this.alpha = 255 - lerp(255, 0, this.lerp);
+    } else {
+        this.sizeProgress = lerp(0, this.size, this.lerp);
+        this.bloom = lerp(constrain(this.n-2, 3, 100), this.n, this.lerp);
+        this.alpha = 255;
+    }
     
-    this.sizeProgress = lerp(0, this.size, this.lerp);
-    this.bloom = lerp(this.n-2, this.n, this.lerp);
     this.angle = TWO_PI/this.bloom;
     this.verts = [];
 
@@ -184,14 +204,15 @@ Cap.prototype.show = function(){
         var vert = new p5.Vector(sx, sy);
         append(this.verts, vert);
     }
-
-    fill(255);
-    stroke(255);
-    beginShape();
-        for (var j=0;j<this.verts.length;j++){
-            vertex(this.verts[j].x, this.verts[j].y);
-        }
-    endShape(CLOSE);
+    push();
+        fill(color(red(this.c), green(this.c), blue(this.c), this.alpha));
+        noStroke();
+        beginShape();
+            for (var j=0;j<this.verts.length;j++){
+                vertex(this.verts[j].x, this.verts[j].y);
+            }
+        endShape(CLOSE);
+    pop();
 
 
     // ellipse(this.position.x, height, this.sizeProgress);
