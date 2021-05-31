@@ -28,9 +28,34 @@ h1 {
     transition: left 0.5s, width 0.5s;
 }
 
+.videoContent{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 20%;
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+.videoContent iframe {
+    display: block;
+    position: relative;
+    width: 50%;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media only screen and (max-width: 900px){
     .circlebottom {
         left: 10%;
         width: 80%;
+    }
+
+    .videoContent iframe {
+        width: 90%;
     }
 }
