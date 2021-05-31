@@ -45,7 +45,7 @@ function sporesExpand(){
         }
         danceFocused = false;
     } else {
-        danceDiv.style.height = "calc(100vh - " + centerHeight + "px)";
+        danceDiv.style.height = "calc(100vh - " + (centerHeight+10) + "px)";
         aboutDiv.style.height = centerHeight + "px";
         videoDiv.style.height = "0vh";
 
@@ -107,7 +107,7 @@ function myceliumExpand(){
     } else {
         danceDiv.style.height = "0vh";
         aboutDiv.style.height = centerHeight + "px";
-        videoDiv.style.height = "calc(100vh - " + centerHeight + "px)";
+        videoDiv.style.height = "calc(100vh - " + (centerHeight+10) + "px)";
         window.frames[2].showContent();
         window.frames[0].hideContent();
         window.frames[1].hideContent();

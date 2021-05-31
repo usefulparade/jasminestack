@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,700;1,100;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 body {
     height: 100vh;
@@ -16,11 +17,13 @@ body {
 
 h1 {
     text-align: center;
-    font-style: italic;
-    font-weight: 700;
+    font-style: normal;
+    color: #8ab5ac;
+    font-weight: 300;
     margin-top: 0px;
     margin-bottom: 5px;
     font-size: 3em;
+    font-family: 'Open Sans', sans-serif;
     /* filter: blur(2px); */
     transition: font-size 0.5s;
     user-select: none;
@@ -42,12 +45,12 @@ a {
 
 /* unvisited link */
 a:link {
-    color: white;
+    color: #8ab5ac;
   }
   
   /* visited link */
   a:visited {
-    color: white;
+    color:#8ab5ac;
   }
   
   /* mouse over link */
@@ -65,7 +68,7 @@ a:link {
     display: block; 
     width: 100vw; 
     height: calc(100vh / 2); 
-    border: solid 10px white; 
+    border: solid 10px #2f2e36; 
     box-sizing: border-box;
     overflow: hidden;
     transition: height 0.5s;
@@ -76,7 +79,7 @@ a:link {
     width: 100vw;
     /* min-height: 100px; */
     height: 0px; 
-    border: solid 10px white; 
+    border: solid 10px #364035; 
     border-bottom: 0px;
     border-top: 0px;
     box-sizing: border-box;
@@ -88,7 +91,7 @@ a:link {
     display: block; 
     width: 100vw; 
     height: calc(100vh / 2);  
-    border: solid 10px white; 
+    border: solid 10px #252326; 
 
     box-sizing: border-box;
     overflow: hidden;
@@ -121,7 +124,6 @@ iframe {
 @media only screen and (max-width: 720px){
     h1 {
         font-size: 2em;
-        filter: blur(1px);
     }
 }
 
