@@ -13,10 +13,26 @@ function setup(){
 }
 
 function utilitiesInit(){
+    danceDiv = window.parent.document.getElementById("dance");
+    aboutDiv = window.parent.document.getElementById("about");
+    videoDiv = window.parent.document.getElementById("video");
+    
+    danceFocused = false;
+    aboutFocused = false;
+    videoFocused = false;
+
+    // danceDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
+    // aboutDiv.style.height = centerHeight + "px";
+    // videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
+
+
+}
+
+function pageInit(){
     danceDiv = document.getElementById("dance");
     aboutDiv = document.getElementById("about");
     videoDiv = document.getElementById("video");
-    
+
     danceFocused = false;
     aboutFocused = false;
     videoFocused = false;
@@ -24,8 +40,6 @@ function utilitiesInit(){
     danceDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
     aboutDiv.style.height = centerHeight + "px";
     videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
-
-
 }
 
 function sporesExpand(){
@@ -41,7 +55,7 @@ function sporesExpand(){
         videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
 
         for (var i = 0;i<3;i++){
-            window.frames[i].hideContent();
+            window.parent.frames[i].hideContent();
         }
         danceFocused = false;
     } else {
@@ -49,9 +63,9 @@ function sporesExpand(){
         aboutDiv.style.height = centerHeight + "px";
         videoDiv.style.height = "0vh";
 
-        window.frames[0].showContent();
-        window.frames[1].hideContent();
-        window.frames[2].hideContent();
+        window.parent.frames[0].showContent();
+        window.parent.frames[1].hideContent();
+        window.parent.frames[2].hideContent();
         danceFocused = true;
         aboutFocused = false;
         videoFocused = false;
@@ -71,7 +85,7 @@ function foragerExpand(){
         videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
         
         for (var i = 0;i<3;i++){
-            window.frames[i].hideContent();
+            window.parent.frames[i].hideContent();
         }
         aboutFocused = false;
     } else {
@@ -79,9 +93,9 @@ function foragerExpand(){
         aboutDiv.style.height = "calc(100vh - " + centerHeight * 2 + "px)";
         videoDiv.style.height = "100px";
 
-        window.frames[1].showContent();
-        window.frames[0].hideContent();
-        window.frames[2].hideContent();
+        window.parent.frames[1].showContent();
+        window.parent.frames[0].hideContent();
+        window.parent.frames[2].hideContent();
         aboutFocused = true;
         danceFocused = false;
         videoFocused = false;
@@ -101,16 +115,16 @@ function myceliumExpand(){
         aboutDiv.style.height = centerHeight + "px";
         videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
         for (var i = 0;i<3;i++){
-            window.frames[i].hideContent();
+            window.parent.frames[i].hideContent();
         }
         videoFocused = false;
     } else {
         danceDiv.style.height = "0vh";
         aboutDiv.style.height = centerHeight + "px";
         videoDiv.style.height = "calc(100vh - " + (centerHeight+10) + "px)";
-        window.frames[2].showContent();
-        window.frames[0].hideContent();
-        window.frames[1].hideContent();
+        window.parent.frames[2].showContent();
+        window.parent.frames[0].hideContent();
+        window.parent.frames[1].hideContent();
         videoFocused = true;
         danceFocused = false;
         aboutFocused = false;
