@@ -4,7 +4,7 @@ let centerHeight;
 
 function setup(){
     noCanvas();
-    if (windowWidth >= 720){
+    if (windowWidth >= 800){
         centerHeight = 100;
     } else {
         centerHeight = 75;
@@ -17,9 +17,9 @@ function utilitiesInit(){
     aboutDiv = window.parent.document.getElementById("about");
     videoDiv = window.parent.document.getElementById("video");
     
-    danceFocused = false;
-    aboutFocused = false;
-    videoFocused = false;
+    window.parent.danceFocused = false;
+    window.parent.aboutFocused = false;
+    window.parent.videoFocused = false;
 
     // danceDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
     // aboutDiv.style.height = centerHeight + "px";
@@ -49,7 +49,7 @@ function sporesExpand(){
         centerHeight = 75;
     }
 
-    if (danceFocused){
+    if (window.parent.danceFocused){
         danceDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
         aboutDiv.style.height = centerHeight + "px";
         videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
@@ -57,7 +57,7 @@ function sporesExpand(){
         for (var i = 0;i<3;i++){
             window.parent.frames[i].hideContent();
         }
-        danceFocused = false;
+        window.parent.danceFocused = false;
     } else {
         danceDiv.style.height = "calc(100vh - " + (centerHeight+10) + "px)";
         aboutDiv.style.height = centerHeight + "px";
@@ -66,9 +66,10 @@ function sporesExpand(){
         window.parent.frames[0].showContent();
         window.parent.frames[1].hideContent();
         window.parent.frames[2].hideContent();
-        danceFocused = true;
-        aboutFocused = false;
-        videoFocused = false;
+
+        window.parent.danceFocused = true;
+        window.parent.aboutFocused = false;
+        window.parent.videoFocused = false;
     }
 }
 
@@ -79,7 +80,7 @@ function foragerExpand(){
         centerHeight = 75;
     }
 
-    if (aboutFocused){
+    if (window.parent.aboutFocused){
         danceDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
         aboutDiv.style.height = centerHeight + "px";
         videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
@@ -87,7 +88,7 @@ function foragerExpand(){
         for (var i = 0;i<3;i++){
             window.parent.frames[i].hideContent();
         }
-        aboutFocused = false;
+        window.parent.aboutFocused = false;
     } else {
         danceDiv.style.height = centerHeight + "px";
         aboutDiv.style.height = "calc(100vh - " + centerHeight * 2 + "px)";
@@ -96,9 +97,10 @@ function foragerExpand(){
         window.parent.frames[1].showContent();
         window.parent.frames[0].hideContent();
         window.parent.frames[2].hideContent();
-        aboutFocused = true;
-        danceFocused = false;
-        videoFocused = false;
+
+        window.parent.aboutFocused = true;
+        window.parent.danceFocused = false;
+        window.parent.videoFocused = false;
     }
     
 }
@@ -110,14 +112,14 @@ function myceliumExpand(){
         centerHeight = 75;
     }
 
-    if (videoFocused){
+    if (window.parent.videoFocused){
         danceDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
         aboutDiv.style.height = centerHeight + "px";
         videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
         for (var i = 0;i<3;i++){
             window.parent.frames[i].hideContent();
         }
-        videoFocused = false;
+        window.parent.videoFocused = false;
     } else {
         danceDiv.style.height = "0vh";
         aboutDiv.style.height = centerHeight + "px";
@@ -125,48 +127,85 @@ function myceliumExpand(){
         window.parent.frames[2].showContent();
         window.parent.frames[0].hideContent();
         window.parent.frames[1].hideContent();
-        videoFocused = true;
-        danceFocused = false;
-        aboutFocused = false;
+        window.parent.videoFocused = true;
+        window.parent.danceFocused = false;
+        window.parent.aboutFocused = false;
     }
 }
 
 function windowResized(){
-    if (windowWidth >= 720){
+    if (windowWidth >= 800){
         centerHeight = 100;
     } else {
         centerHeight = 75;
     }
 
-    if (danceFocused){
-        danceDiv.style.height = "calc(100vh - " + centerHeight + "px)";
-        aboutDiv.style.height = centerHeight + "px";
-        videoDiv.style.height = "0vh";
-    } else if (aboutFocused){
-        danceDiv.style.height = centerHeight + "px";
-        aboutDiv.style.height = "calc(100vh - " + centerHeight * 2 + "px)";
-        videoDiv.style.height = "100px";
-    } else if (videoFocused){
-        danceDiv.style.height = "0vh";
-        aboutDiv.style.height = centerHeight + "px";
-        videoDiv.style.height = "calc(100vh - " + centerHeight + "px)";
+    if (window.parent.danceFocused){
+        window.parent.danceDiv.style.height = "calc(100vh - " + centerHeight + "px)";
+        window.parent.aboutDiv.style.height = centerHeight + "px";
+        window.parent.videoDiv.style.height = "0vh";
+    } else if (window.parent.aboutFocused){
+        window.parent.danceDiv.style.height = centerHeight + "px";
+        window.parent.aboutDiv.style.height = "calc(100vh - " + centerHeight * 2 + "px)";
+        window.parent.videoDiv.style.height = "100px";
+    } else if (window.parent.videoFocused){
+        window.parent.danceDiv.style.height = "0vh";
+        window.parent.aboutDiv.style.height = centerHeight + "px";
+        window.parent.videoDiv.style.height = "calc(100vh - " + centerHeight + "px)";
     } else {
-        danceDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
-        aboutDiv.style.height = centerHeight + "px";
-        videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
+        window.parent.danceDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
+        window.parent.aboutDiv.style.height = centerHeight + "px";
+        window.parent.videoDiv.style.height = "calc((100vh - " + centerHeight + "px) / 2)";
     }
+
+    // console.log("dance: " + window.parent.danceFocused + ", about: " + window.parent.aboutFocused + "video: " + window.parent.videoFocused);
 }
 
 function showContent(){
-    var content = document.getElementById("content");
+
+    // var content = document.getElementById("content");
+    // if (content != null){
+    //     content.style.opacity = "1";
+    //     content.style.pointerEvents = "auto";
+    // }
+
+    var content = document.getElementsByClassName("content");
+
     if (content != null){
-        content.style.opacity = "1";
+        for (var i=0;i<content.length;i++){
+            content[i].style.opacity = "1";
+            content[i].style.pointerEvents = "auto";
+        }
     }
 }
 
 function hideContent(){
-    var content = document.getElementById("content");
+    var content = document.getElementsByClassName("content");
+
     if (content != null){
-        content.style.opacity = "0";
+        for (var i=0;i<content.length;i++){
+            content[i].style.opacity = "0";
+            content[i].style.pointerEvents = "none";
+        }
+    }
+    // var content = document.getElementById("content");
+    // if (content != null){
+    //     content.style.opacity = "0";
+    //     content.style.pointerEvents = "none";
+    // }
+}
+
+function danceScroll(){
+    
+    var container = document.getElementsByClassName("danceContent")[0];
+    var sections = document.getElementsByClassName("danceContentBlock");
+    var navs = document.getElementsByClassName("danceNav");
+    console.log(container.scrollTop);
+    for (var i = 0; i < navs.length; i++){
+        if (container.scrollTop >= sections[i+1].offsetTop && container.scrollTop < sections[i+1].offsetTop + sections[i+1].offsetHeight){
+            navs[i].style.color = "white";
+        } else {
+            navs[i].style.color = "#5b9292";
+        }
     }
 }

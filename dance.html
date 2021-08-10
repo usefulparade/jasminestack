@@ -14,16 +14,110 @@
     <script src="js/p5.dom.min.js"></script>
     <script src="js/utilities.js"></script>
     <script src="js/spores.js"></script>
+
+    <script>
+
+    </script>
 </head>
 
 <body onload="utilitiesInit()">
     
    
     <div class="circletop"></div>
-    <div class="canvas" id="sporeCanvas"></div>
-    <div class="danceContainer" id="content">
+    <div class="danceBG content" id="content"></div>
     
-        <div class="danceContent">
+    <div class="canvas" id="sporeCanvas"></div>
+    
+    <div class="danceContainer content" id="content">
+        
+        
+        <div class="danceNavBlock">
+            <a href="#choreography"><div class="danceNav" id="nav"><h3>CHOREOGRAPHY</h3></div></a>
+            <a href="#performance"><div class="danceNav" id="nav"><h3>PERFORMANCE</h3></div></a>
+            <a href="#teaching"><div class="danceNav" id="nav"><h3>TEACHING</h3></div></a>
+
+        </div>
+
+        <div class="danceContent" onscroll="danceScroll()">
+            <div class="danceContentBlock" id="empty"></div>
+            <div class="danceContentBlock" id="choreography">
+                <h3>// CHOREOGRAPHY</h3>
+                <br><br>
+                <div class="dancePortfolioText">
+                    <h3>2021</h3>
+                    <p>"Number Eight"<br>
+                    performed at Real Art Ways<br>
+                    02/15<br>
+                    Using sensory stimuli, creative movement practices, invented creatures and immerice performance, this dance research presents a reimagined view of the desert landscapes that have come to be known within North American cultural discourse as "The West."</p>
+
+                    <p>Performers<br>
+                        Bri Lopez<br>
+                        Rachel Leubbert<br>
+                        Shane Davis</p>
+                </div>
+                <div class="dancePortfolioImg">
+                    <img src="img/dance/ig1.jpg">
+                </div>
+                <div class="dancePortfolioText">
+                    <h3>2020</h3>
+                    <p>"???"<br>
+                    performed at Real Art Ways<br>
+                    02/15<br>
+                    Using sensory stimuli, creative movement practices, invented creatures and immerice performance, this dance research presents a reimagined view of the desert landscapes that have come to be known within North American cultural discourse as "The West."</p>
+
+                    <p>Performers<br>
+                        Bri Lopez<br>
+                        Rachel Leubbert<br>
+                        Shane Davis</p>
+                </div>
+                <div class="dancePortfolioImg">
+                    <img src="img/dance/ig2.jpg">
+                </div>
+            </div>
+
+            <div class="danceContentBlock" id="performance">
+                <h3>// PERFORMANCE</h3>
+                <br><br>
+                <div class="dancePortfolioText">
+                    <h3>2021</h3>
+                    <p>"Number Eight"<br>
+                    performed at Real Art Ways<br>
+                    02/15<br>
+                    Using sensory stimuli, creative movement practices, invented creatures and immerice performance, this dance research presents a reimagined view of the desert landscapes that have come to be known within North American cultural discourse as "The West."</p>
+
+                    <p>Performers<br>
+                        Bri Lopez<br>
+                        Rachel Leubbert<br>
+                        Shane Davis</p>
+                </div>
+                <div class="dancePortfolioImg">
+                    <img src="img/dance/ig4.jpg">
+                </div>
+            </div>
+
+            <div class="danceContentBlock" id="teaching">
+                <h3>// TEACHING</h3>
+                <br><br>
+                <div class="dancePortfolioText">
+                    <h3>2021</h3>
+                    <p>"Number Eight"<br>
+                    performed at Real Art Ways<br>
+                    02/15<br>
+                    Using sensory stimuli, creative movement practices, invented creatures and immerice performance, this dance research presents a reimagined view of the desert landscapes that have come to be known within North American cultural discourse as "The West."</p>
+
+                    <p>Performers<br>
+                        Bri Lopez<br>
+                        Rachel Leubbert<br>
+                        Shane Davis</p>
+                </div>
+                <div class="dancePortfolioImg">
+                    <img src="img/dance/ig3.jpg">
+                </div>
+            </div>
+
+        </div>
+    
+        <!-- <div class="danceContent">
 
             <div class="danceContentBlock" id="choreographer">
                 <h2>Choreographer</h2>
@@ -41,7 +135,6 @@
                 <p>“Aye, you are the chap, ain’t ye, that heard the hum of the old Quakeress’s knitting-needles fifty miles at sea from Nantucket; you’re the chap.”</p>
                 <img src="img/dance/ig1.jpg">
                 <img src="img/dance/ig2.jpg">
-                <!-- <img src="img/dance/ig3.jpg"> -->
                 <img src="img/dance/ig4.jpg">
             </div>
 
@@ -55,7 +148,7 @@
             <a href="#choreographer"><div class="danceNav"><h3><span id="emoji"><span class="material-icons" style="font-size: 48px;">gesture</span></span><span id="text">Choreo</span></h3>
             </div></a><a href="#dancer"><div class="danceNav"><h3><span id="emoji"><span class="material-icons" style="font-size: 48px;">accessibility_new</span></span><span id="text">Dancer</span></h3>
             </div></a><a href="#teacher"><div class="danceNav"><h3><span id="emoji"><span class="material-icons" style="font-size: 48px;">mediation</span></span><span id="text">Teacher</span></h3></div></a>
-        </div>
+        </div> -->
        
         <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/PQT3NnIMgj0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
     </div>

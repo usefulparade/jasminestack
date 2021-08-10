@@ -9,18 +9,19 @@ body {
 
 h1 {
     display: block;
-    /* color: rgb(56, 149, 255); */
-    /* text-shadow: 4px 4px rgb(167, 82, 82); */
     position: fixed;
     width: 100%;
     bottom: 0px;
     letter-spacing: 0em;
     white-space: pre;
+    z-index: 500;
 }
 
 h3 {
     font-weight: 100;
     font-size: 1.5em;
+    margin: 0px;
+
 }
 
 ul {
@@ -48,32 +49,56 @@ li::before {
     left: calc(50% - 250px);
     bottom: -300px;
     border-radius: 500px;
-    background-color: #336666;
+    background-color: #336666d2;
     transition: left 0.5s, width 0.5s;
+    z-index: -100;
+    pointer-events: none;
+}
+
+.content {
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 .danceContainer{
     display: block;
     position: fixed;
-    top: 10%;
-    left: 15%;
-    width: 70vw;
-    height: 75vh;
-    /* padding-top: 5%; */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     transition: opacity 0.5s;
     opacity: 0;
-    /* background-color: #336666cb; */
-    /* border: 5px solid #336666f5; */
-    /* box-sizing: content-box; */
-    /* overflow-y: scroll; */
+    box-sizing: border-box;
+    /* padding-bottom: 70px; */
+}
 
+
+
+.danceBG {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/img/dance/rock.png");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: right;
+    background-attachment: fixed;
+    z-index: -1000;
 }
 
 .danceNavBlock {
     display: block;
-    position: relative;
-    width: 70vw;
-    /* margin-top: 30px; */
+    position: fixed;
+    width: 20%;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    padding-top: calc(2% + 20px);
     box-sizing: border-box;
     z-index: 1000;
 }
@@ -81,22 +106,15 @@ li::before {
 .danceNav {
     display: inline-block;
     position: relative;
-    text-align: center;
-    width: calc(100% / 4);
-    /* border: 1px solid black; */
-    /* padding-top: 10px;
-    padding-bottom: 10px; */
-    color: #8ab5ac;
-    /* border-radius: 100px; */
-    /* border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px; */
-    /* background-color: #5c4d8a; */
-    /* border: 5px solid #5c4d8a; */
+    text-align: left;
+    width: 100%;
+    text-decoration: none;
+    font-weight: 100;
+    color: #5b9292;
     border-top: 0px;
     margin: 0px;
     margin-left: calc(100% / 24);
     margin-right: calc(100% / 24);
-    /* margin-top: -5%; */
     box-sizing: border-box;
     padding: 0px;
     transition: background-color, 0.2s;
@@ -119,18 +137,21 @@ li::before {
 
 .danceNav span#emoji {
     display: inline-block;
-    /* font-size: 48px; */
-    /* padding-left: 10px; */
 }
 
 .danceContent {
+    display: inline-block;
+    position: relative;
     padding: 10px;
-    height: 75%;
+    padding-top: 0px;
+    height: 100%;
+    width: 100%;
     overflow-y: scroll;
     box-sizing: border-box;
-    border-bottom: solid 5px #5c4d8a;
+    /* border-top: solid 1px #5c4d8a; */
     vertical-align: text-top;
-    scroll-behavior: smooth;
+    scroll-behavior:auto;
+    
     /* background-color: #336666cb; */
 }
 
@@ -138,57 +159,114 @@ li::before {
     display: inline-block;
     position: relative;
     width: 100%;
-    height: 105%;
-    /* padding-left: 10%; */
-    /* padding-right: 10%; */
-    padding-top: 20px;
-    padding-bottom: 0%;
+    min-height: 100vh;
+    padding-bottom: 20%;
+    padding-left: 28%;
+    padding-top: calc(2% + 20px);
     box-sizing: border-box;
 }
 
-.danceContent img {
+.danceContentBlock#empty {
+    height: 100vh;
+}
+
+
+.dancePortfolioText {
     display: inline-block;
     position: relative;
-    width: 49%;
-    padding: 2%;
-    /* border: 5px solid #5c4d8a; */
+    width: 48%;
+    padding-right: 20px;
+    vertical-align: top;
+    text-align: left;
     box-sizing: border-box;
+}
+
+.dancePortfolioImg {
+    display: inline-block;
+    position: relative;
+    width: 48%;
+    height: auto;
+    vertical-align: top;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+}
+
+.dancePortfolioImg img {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    border: 5px solid #5c4d8a;
+    mix-blend-mode: normal;
 }
 
 
 
 @media only screen and (max-width: 800px){
+
     .circletop {
-        /* left: calc(50% - (80% / 2));
-        width: 80%; */
+        width: 300px;
+        height: 300px;
+        left: calc(50% - 150px);
+        bottom: -200px;
+        border-radius: 500px;
     }
 
     .danceContainer {
-        top: 5%;
+        top: 0%;
         left: 0%;
         width: 100vw;
     }
 
-    .danceNav span#text {
+    .danceBG {
+        background-size: 100%;
+        pointer-events: none;
+    }
+
+    /* .danceNav span#text {
         display: none;
     }
 
     .danceNav span#emoji {
         display: inline-block;
-    }
+    } */
 
     .danceNavBlock {
-        /* left: 0%; */
-        width: 100vw;
+        display: inline-block;
+        position: relative;
+        left: 0px;
+        width: 100%;
+        padding-top: 0px;
+        padding-left: 0px;
+    }
+
+    .danceNav {
+        width: 50%;
+        font-size: 0.5em;
+        text-align: left;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .danceContent {
+        padding-left: 0px;
     }
 
     .danceContentBlock {
-        /* padding-left: 2%;
-        padding-right: 2%; */
+        padding-left: 0px;
+        padding-bottom: 20%;
     }
 
-    .danceContent img {
+    /* .danceContent img {
         width: 100%;
         padding: 5%;
+    } */
+
+    .dancePortfolioText {
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .dancePortfolioImg {
+        width: 100%;
     }
 }

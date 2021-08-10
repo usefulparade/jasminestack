@@ -28,7 +28,7 @@ p {
     position: fixed;
     top: 0px;
     left: calc(50% - 245px);
-    background-color: #336666;
+    background-color: #3366667a;
     width: 490px;
     margin-top: 0px;
     margin-left: auto;
@@ -77,10 +77,10 @@ p {
     box-sizing: border-box;
 }
 
-@media only screen and (max-width: 720px){
+@media only screen and (max-width: 800px){
     .container {
-        /* left: 10%;
-        width: 80%; */
+        left: calc(50% - 145px);
+        width: 290px;
     }
     .aboutContent img {
         float: none;
